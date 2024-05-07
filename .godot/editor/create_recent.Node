@@ -1,0 +1,6 @@
+SubViewportContainer
+SubViewport
+TextureRect
+Area2D
+CollisionShape2D
+Sprite2D
