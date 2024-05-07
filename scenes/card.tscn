@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ccpeukrdsfbkm"]
 
-[ext_resource type="Texture2D" uid="uid://cskh758f74ngv" path="res://scenes/balatro/visuals/Tiles_A_white.png" id="1_3sp1f"]
-[ext_resource type="Shader" path="res://scenes/shared/shaders/fake_3D.gdshader" id="1_7h7yf"]
-[ext_resource type="Shader" path="res://scenes/shared/shaders/dissolve.gdshader" id="1_8jfk0"]
-[ext_resource type="Script" path="res://scenes/balatro/scripts/card.gd" id="1_borcn"]
+[ext_resource type="Texture2D" uid="uid://b40ykb3oeelmj" path="res://assets/cards/C-J.png" id="1_3sp1f"]
+[ext_resource type="Shader" path="res://assets/shaders/fake_3D.gdshader" id="1_7h7yf"]
+[ext_resource type="Shader" path="res://assets/shaders/dissolve.gdshader" id="1_8jfk0"]
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_borcn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
 seed = -15
@@ -48,7 +48,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7aqjh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7aqjh")
 script = ExtResource("1_borcn")
-velocity_multiplier = 1.0
 
 [node name="Shadow" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -58,8 +57,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 24.0
-offset_bottom = 24.0
+offset_top = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3sp1f")
@@ -76,9 +75,10 @@ grow_vertical = 2
 texture = ExtResource("1_3sp1f")
 expand_mode = 1
 
-[node name="DestroyArea" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 1
 position = Vector2(75, 104.5)
 shape = SubResource("RectangleShape2D_xsth3")
 disabled = true
