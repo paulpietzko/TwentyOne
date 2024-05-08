@@ -1,28 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cut3t1n8mqh4l"]
+[gd_scene load_steps=3 format=3 uid="uid://cut3t1n8mqh4l"]
 
-[ext_resource type="PackedScene" uid="uid://ccpeukrdsfbkm" path="res://scenes/card.tscn" id="1_c104v"]
-[ext_resource type="Shader" path="res://assets/shaders/dissolve.gdshader" id="2_e3b8j"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_27hgv"]
 [ext_resource type="Texture2D" uid="uid://c7sntl4ursip5" path="res://assets/Gray.png" id="3_61ntu"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_kntej"]
-seed = -15
-frequency = 0.0021
-fractal_octaves = 4
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bboy4"]
-noise = SubResource("FastNoiseLite_kntej")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dehl"]
-resource_local_to_scene = true
-shader = ExtResource("2_e3b8j")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/burn_size = 0.03
-shader_parameter/burn_color = Color(1.5, 0.924, 0, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bboy4")
-
 [node name="Game" type="Node2D"]
+script = ExtResource("1_27hgv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_left = -72.0
 offset_top = -68.0
 offset_right = 1255.0
@@ -31,9 +15,60 @@ size_flags_horizontal = 4
 texture = ExtResource("3_61ntu")
 stretch_mode = 1
 
-[node name="Card" parent="." instance=ExtResource("1_c104v")]
-material = SubResource("ShaderMaterial_3dehl")
-offset_left = 516.0
-offset_top = 382.0
-offset_right = 668.0
-offset_bottom = 589.0
+[node name="PlayerHand" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DealerHand" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HitButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 539.0
+offset_right = 837.0
+offset_bottom = 570.0
+text = "Hit"
+
+[node name="StandButton" type="Button" parent="UI"]
+offset_left = 727.0
+offset_top = 542.0
+offset_right = 780.0
+offset_bottom = 573.0
+text = "Stand"
+
+[node name="PlayerScore" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 164.0
+offset_right = 496.0
+offset_bottom = 187.0
+text = "Player:"
+
+[node name="DealerScore" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 161.0
+offset_right = 371.0
+offset_bottom = 184.0
+text = "Dealer: "
+
+[node name="MessageLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 158.0
+offset_right = 190.0
+offset_bottom = 181.0
+text = "Message"
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="UI/HitButton" to="." method="_on_hit_button_pressed"]
+[connection signal="pressed" from="UI/StandButton" to="." method="_on_stand_button_pressed"]

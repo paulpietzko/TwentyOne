@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccpeukrdsfbkm"]
+[gd_scene load_steps=10 format=3 uid="uid://ccpeukrdsfbkm"]
 
 [ext_resource type="Texture2D" uid="uid://b40ykb3oeelmj" path="res://assets/cards/C-J.png" id="1_3sp1f"]
 [ext_resource type="Shader" path="res://assets/shaders/fake_3D.gdshader" id="1_7h7yf"]
@@ -32,9 +32,6 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsth3"]
-size = Vector2(130, 175)
 
 [node name="Card" type="Button"]
 material = SubResource("ShaderMaterial_3ph3s")
@@ -74,14 +71,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3sp1f")
 expand_mode = 1
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-z_index = 1
-position = Vector2(75, 104.5)
-shape = SubResource("RectangleShape2D_xsth3")
-disabled = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

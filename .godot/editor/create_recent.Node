@@ -1,7 +1,12 @@
+Timer
+Label
+Button
+Control
+SubViewport
+HBoxContainer
 TextureRect
 ColorRect
 SubViewportContainer
-SubViewport
 Area2D
 CollisionShape2D
 Sprite2D

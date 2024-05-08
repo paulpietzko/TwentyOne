@@ -4,8 +4,8 @@ extends Button
 @export var angle_y_max_deg: float = 5.0
 @export var max_offset_shadow: float = 50.0
 
-@export var suit: String = "C"  # Colors: C (Clubs), D (Diamonds), H (Hearts), S (Spades)
-@export var rank: String = "A"  # Ranks: 2-10, J, Q, K, A
+@export var suit: String = ""  # Colors: C (Clubs), D (Diamonds), H (Hearts), S (Spades)
+@export var rank: String = ""  # Ranks: 2-10, J, Q, K, A
 
 var tween_hover: Tween
 var tween_rot: Tween
@@ -18,8 +18,16 @@ func _ready() -> void:
 
 # Color and Rank
 func update_card_texture() -> void:
+	if not card_texture:
+		print("card_texture ist nicht verfügbar")
+		return
 	var texture_path: String = "res://assets/cards/%s-%s.png" % [suit, rank]
-	card_texture.texture = load(texture_path)
+	var texture = load(texture_path)
+	if texture:
+		card_texture.texture = texture
+	else:
+		print("Fehler beim Laden der Textur: " + texture_path)
+
 
 func set_card(suit: String, rank: String) -> void:
 	self.suit = suit
