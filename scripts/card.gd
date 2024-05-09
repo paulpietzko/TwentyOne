@@ -7,21 +7,33 @@ extends Button
 @export var suit: String = ""  # Colors: C (Clubs), D (Diamonds), H (Hearts), S (Spades)
 @export var rank: String = ""  # Ranks: 2-10, J, Q, K, A
 
+@onready var card_texture = $CardTexture
+@onready var shadow = $Shadow
+@onready var dealer_hand_container = $DealerHand
+
 var tween_hover: Tween
 var tween_rot: Tween
-
-@onready var card_texture: TextureRect = $CardTexture
-@onready var shadow = $Shadow
 
 func _ready() -> void:
 	update_card_texture()
 
 # Color and Rank
+func is_digit(s):
+	return s.match("^\\d+$") != null
+
 func update_card_texture() -> void:
 	if not card_texture:
 		print("card_texture ist nicht verfügbar")
 		return
-	var texture_path: String = "res://assets/cards/%s-%s.png" % [suit, rank]
+
+	var rank_str = rank
+	var face_cards = ["J", "Q", "K", "A"]
+	if rank in face_cards:
+		rank_str = rank[0]  # Nimmt den ersten Buchstaben für Bildkarten und Asse
+	else:
+		rank_str = rank  # Verwendet die Zahl direkt
+
+	var texture_path: String = "res://assets/cards/%s-%s.png" % [suit, rank_str]
 	var texture = load(texture_path)
 	if texture:
 		card_texture.texture = texture
@@ -76,3 +88,12 @@ func _on_mouse_exited() -> void:
 	create_hover_tween(Vector2.ONE, 0.55)
 	reset_rotation()
 
+func reveal():
+
+	self.visible = true  # Ensure the card is visible, using a tab for indentation
+
+# Use the custom method in your game logic script
+func reveal_dealer_cards():
+	var dealer_cards = dealer_hand_container.get_children()
+	for card in dealer_cards:
+		card.show()  # Stellen Sie sicher, dass 'show' die Sichtbarkeit richtig setzt

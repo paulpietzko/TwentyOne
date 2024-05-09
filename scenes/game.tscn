@@ -15,33 +15,26 @@ size_flags_horizontal = 4
 texture = ExtResource("3_61ntu")
 stretch_mode = 1
 
-[node name="PlayerHand" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DealerHand" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="HitButton" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 806.0
-offset_top = 539.0
-offset_right = 837.0
-offset_bottom = 570.0
+offset_left = 1114.0
+offset_top = 283.0
+offset_right = 1145.0
+offset_bottom = 314.0
 text = "Hit"
 
 [node name="StandButton" type="Button" parent="UI"]
-offset_left = 727.0
-offset_top = 542.0
-offset_right = 780.0
-offset_bottom = 573.0
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 242.0
+offset_right = 1144.0
+offset_bottom = 273.0
 text = "Stand"
 
 [node name="PlayerScore" type="Label" parent="UI"]
@@ -67,6 +60,18 @@ offset_top = 158.0
 offset_right = 190.0
 offset_bottom = 181.0
 text = "Message"
+
+[node name="PlayerHand" type="HBoxContainer" parent="."]
+offset_left = 208.0
+offset_top = 411.0
+offset_right = 248.0
+offset_bottom = 451.0
+
+[node name="DealerHand" type="HBoxContainer" parent="."]
+offset_left = 448.0
+offset_top = 6.0
+offset_right = 488.0
+offset_bottom = 46.0
 
 [node name="GameTimer" type="Timer" parent="."]
 
