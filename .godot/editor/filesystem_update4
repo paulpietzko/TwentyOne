@@ -1,4 +1,4 @@
 res://scenes/game.tscn
 res://scenes/card.tscn
-res://scripts/game.gd
-res://scripts/card.gd
+res://scenes/menu.tscn
+res://scenes/shop.tscn

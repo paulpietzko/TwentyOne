@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://qawyp8aq3tbd"]
+
+[ext_resource type="Texture2D" uid="uid://r47tbm6tl684" path="res://assets/background2.png" id="1_bu8bf"]
+
+[sub_resource type="Theme" id="Theme_4wane"]
+
+[node name="Shop" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -15.0
+offset_top = -19.0
+offset_right = 1175.0
+offset_bottom = 666.0
+size_flags_horizontal = 4
+texture = ExtResource("1_bu8bf")
+stretch_mode = 1
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.5
+offset_right = 81.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme = SubResource("Theme_4wane")
+theme_override_font_sizes/font_size = 100
+text = "shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.684
+anchor_right = 0.521
+anchor_bottom = 0.684
+offset_left = -80.192
+offset_top = -15.232
+offset_right = 80.808
+offset_bottom = 15.768
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Next Round"

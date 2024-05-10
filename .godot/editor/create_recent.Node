@@ -1,9 +1,11 @@
-Timer
-Label
+RichTextLabel
+HBoxContainer
 Button
+Node
+Label
+Timer
 Control
 SubViewport
-HBoxContainer
 TextureRect
 ColorRect
 SubViewportContainer
